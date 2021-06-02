@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'views',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +105,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -120,3 +134,23 @@ STATIC_URL = '/static/'
 AZ_CONTENT_MODERATOR_URL = 'https://westeurope.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText' \
                            '/Screen?classify=True '
 AZ_SUBSCRIPTION_KEY = config('AZ_SUBSCRIPTION_KEY', default='')
+
+SITE_ID = 3
+
+# Provider specific settings
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'APP': {
+#             'client_id': '683318596584-5v1o333ggprfq2cp042uv93jhsmi0shr.apps.googleusercontent.com',
+#             'secret': 'KRfnc3Wd699eNKrDc3nm4y_Z',
+#             'key': ''
+#         }
+#     }
+# }
