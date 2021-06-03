@@ -3,6 +3,11 @@ import requests
 from django.conf import settings
 
 from django.http.response import JsonResponse
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'views/index.html')
 
 
 def create_view(request):
