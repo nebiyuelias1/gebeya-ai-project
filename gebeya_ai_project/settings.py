@@ -137,4 +137,5 @@ AZ_SUBSCRIPTION_KEY = config('AZ_SUBSCRIPTION_KEY', default='')
 
 SITE_ID = 3
 
-# Provider specific settings
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'

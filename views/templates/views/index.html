@@ -1,0 +1,8 @@
+{% extends 'views/base.html' %}
+{% block main %}
+    {% if user.is_authenticated %}
+        <h1 class="mt-4 text-center">Welcome
+            {{ user.first_name }} {{ user.last_name }}!
+        </h1>
+    {% endif %}
+{% endblock %}
