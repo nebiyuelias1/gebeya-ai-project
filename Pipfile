@@ -7,6 +7,8 @@ name = "pypi"
 django = "==3.2.3"
 django-allauth = "*"
 python-decouple = "*"
+django-avatar = "*"
+six = "*"
 
 [dev-packages]
 
