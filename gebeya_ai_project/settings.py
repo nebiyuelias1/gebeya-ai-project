@@ -41,10 +41,12 @@ INSTALLED_APPS = [
 
     'views',
 
+    # Third party apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'avatar'
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,10 @@ SITE_ID = 3
 
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+AVATAR_DEFAULT_URL = 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp'
+
+# Base url to serve media files
+MEDIA_URL = '/media/'
+
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

@@ -1,8 +1,31 @@
 {% extends 'views/base.html' %}
+{% load static %}
+{% load avatar_tags %}
+
 {% block main %}
     {% if user.is_authenticated %}
         <h1 class="mt-4 text-center">Welcome
             {{ user.first_name }} {{ user.last_name }}!
         </h1>
     {% endif %}
+
+    <div class="mt-5 card">
+        <div class="card-header">
+            <img src="{% static 'views/img/view.svg' %}" alt="View icon" width="48px">
+            <strong>Create your view</strong>
+        </div>
+        <div class="card-body">
+            <div class="d-flex">
+                {% avatar user 48 class="rounded-avatar" id="user_avatar" %}
+
+                <input class="form-control" type="text" placeholder="Create your view..."
+                       data-bs-toggle="modal" data-bs-target="#exampleModal"
+                       style="background: #fff; margin-left: 1em; border-radius: 1em"
+                       aria-label="readonly input example" readonly>
+
+            </div>
+        </div>
+
+        {% include 'views/create_view_form.html' %}
+    </div>
 {% endblock %}

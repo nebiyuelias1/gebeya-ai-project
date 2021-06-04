@@ -1,0 +1,12 @@
+.navbar-brand {
+    /*TODO: Change font*/
+    /*font-family: 'Aclonica', sans-serif;*/
+}
+
+#user_avatar {
+    border-radius: 50% !important;
+}
+
+.tox-statusbar {
+    display: none;
+}
