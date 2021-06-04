@@ -5,9 +5,22 @@ from django.conf import settings
 from django.http.response import JsonResponse
 from django.shortcuts import render
 
+from views.forms import ViewForm
+from views.models import View
+
 
 def index(request):
-    return render(request, 'views/index.html')
+    if request.method == 'POST':
+        form = ViewForm(request.POST)
+        if form.is_valid():
+            view = form.save()
+            view.user = request.user
+            view.save()
+    else:
+        form = ViewForm()
+
+    views = View.objects.all()
+    return render(request, 'views/index.html', {'form': form, 'views': views})
 
 
 def create_view(request):
