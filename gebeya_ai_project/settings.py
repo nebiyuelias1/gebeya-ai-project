@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'avatar'
+    'avatar',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,8 @@ AZ_CONTENT_MODERATOR_URL = 'https://westeurope.api.cognitive.microsoft.com/conte
 AZ_SUBSCRIPTION_KEY = config('AZ_SUBSCRIPTION_KEY', default='')
 
 SITE_ID = 3
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'

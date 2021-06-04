@@ -1,3 +1,5 @@
+{% load bootstrap5 %}
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -7,16 +9,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <textarea class="form-control" id="viewTextArea" rows="2"
-                                  placeholder="Write something here..."></textarea>
-                    </div>
+                <form id="createViewForm" action="{% url 'index' %}" method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Post</button>
+                <button data-action-url="{% url 'index' %}" id="postViewBtn" type="button" class="btn btn-primary">Post</button>
             </div>
         </div>
     </div>
