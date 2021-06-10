@@ -27,3 +27,27 @@ class View(models.Model):
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('view_detail', kwargs={'pk': self.pk})
+
+
+class ViewReview(models.Model):
+    # The view this model is linked to.
+    view = models.OneToOneField(View, on_delete=models.CASCADE, null=False, related_name='view_review')
+
+    category_one_score = models.DecimalField(max_digits=11, decimal_places=10)
+
+    category_two_score = models.DecimalField(max_digits=11, decimal_places=10)
+
+    category_three_score = models.DecimalField(max_digits=11, decimal_places=10)
+
+    def __str__(self):
+        return f'[{self.view}]({self.category_one_score}, {self.category_two_score}, {self.category_three_score})'
+
+
+class Term(models.Model):
+    # The ViewReview model that is attached to this term.
+    view_review = models.ForeignKey(ViewReview, on_delete=models.CASCADE, null=False, related_name='terms')
+
+    term = models.CharField(max_length=560)
+
+    def __str__(self):
+        return f'{self.term}'
