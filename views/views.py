@@ -1,11 +1,13 @@
 # Create your views here.
 import requests
+
 from django.conf import settings
 from django.http.response import JsonResponse
 from django.shortcuts import render
 
 from views.forms import ViewForm
 from views.models import View
+from views.utils import review_view
 
 
 def index(request):
@@ -15,6 +17,7 @@ def index(request):
             view = form.save()
             view.user = request.user
             view.save()
+            review_view(view)
     else:
         form = ViewForm()
 
