@@ -1,7 +1,6 @@
 # Create your views here.
 import requests
 from django.conf import settings
-
 from django.http.response import JsonResponse
 from django.shortcuts import render
 
@@ -31,3 +30,9 @@ def create_view(request):
                              'Is this a crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052',
                              headers=headers)
     return JsonResponse(response.json())
+
+
+def detail(request, pk):
+    view = View.objects.get(pk=pk)
+
+    return render(request, 'views/view_detail.html', {'view': view})

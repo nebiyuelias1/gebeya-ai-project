@@ -1,0 +1,9 @@
+{% extends 'views/base.html' %}
+{% load static %}
+{% load avatar_tags %}
+{% load view_tags %}
+
+{% block main %}
+    <h2 class="text-center mt-2">View Detail</h2>
+    {% view_card view %}
+{% endblock %}

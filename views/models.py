@@ -15,8 +15,15 @@ class View(models.Model):
     # The time the view was posted.
     created_at = models.DateTimeField(default=timezone.now)
 
+    # Whether or not this view has been flagged by the content moderator.
+    flagged = models.BooleanField(default=False)
+
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
         return self.content
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('view_detail', kwargs={'pk': self.pk})
